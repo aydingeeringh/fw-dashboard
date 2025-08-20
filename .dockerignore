@@ -1,6 +1,6 @@
 node_modules
 npm-debug.log
-build
+# build - commented out for static deployment
 .git
 .gitignore
 README.md

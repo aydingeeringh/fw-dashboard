@@ -1,8 +1,9 @@
 # Simple static build approach - build locally first
 FROM nginx:alpine
 
-# Copy nginx configuration
+# Copy nginx configuration and remove default config
 COPY nginx.conf /etc/nginx/nginx.conf
+RUN rm -f /etc/nginx/conf.d/default.conf
 
 # Copy pre-built Evidence files
 COPY build/ /usr/share/nginx/html/

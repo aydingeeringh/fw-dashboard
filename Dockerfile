@@ -1,15 +1,18 @@
-# Simple static build approach - build locally first
-FROM nginx:alpine
+# Simple Node.js static server
+FROM node:18-alpine
 
-# Copy nginx configuration and remove default config
-COPY nginx.conf /etc/nginx/nginx.conf
-RUN rm -f /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-# Copy pre-built Evidence files
-COPY build/ /usr/share/nginx/html/
+# Copy package.json and install only express
+COPY package.json ./
+RUN npm install express --only=production
+
+# Copy built files and server
+COPY build/ ./build/
+COPY server.js ./
 
 # Expose port 8080
 EXPOSE 8080
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start the server
+CMD ["node", "server.js"]

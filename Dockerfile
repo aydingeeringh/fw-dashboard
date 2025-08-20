@@ -1,5 +1,12 @@
-# Use Node.js 18 as base image
-FROM node:18-alpine AS builder
+# Use Node.js 18 Debian image for better DuckDB compatibility
+FROM node:18-slim AS builder
+
+# Install necessary dependencies
+RUN apt-get update && apt-get install -y \
+    python3 \
+    make \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app

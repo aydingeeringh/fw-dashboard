@@ -1,6 +1,6 @@
 .evidence/template
 .svelte-kit
-build
+# build - commented out for static deployment
 node_modules
 .DS_Store
 static/data

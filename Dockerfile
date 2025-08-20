@@ -1,36 +1,11 @@
-# Use Node.js 18 Debian image for better DuckDB compatibility
-FROM node:18-slim AS builder
-
-# Install necessary dependencies
-RUN apt-get update && apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
-
-# Set working directory
-WORKDIR /app
-
-# Copy package files
-COPY package*.json ./
-
-# Install dependencies
-RUN npm ci
-
-# Copy source code
-COPY . .
-
-# Generate data sources and build the Evidence dashboard
-RUN npm run sources && npm run build
-
-# Production stage with Nginx
+# Simple static build approach - build locally first
 FROM nginx:alpine
 
-# Copy custom nginx config
+# Copy nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy built Evidence app to nginx html directory
-COPY --from=builder /app/build /usr/share/nginx/html
+# Copy pre-built Evidence files
+COPY build/ /usr/share/nginx/html/
 
 # Expose port 80
 EXPOSE 80

@@ -13,8 +13,8 @@ RUN npm ci
 # Copy source code
 COPY . .
 
-# Build the Evidence dashboard
-RUN npm run build
+# Generate data sources and build the Evidence dashboard
+RUN npm run sources && npm run build
 
 # Production stage with Nginx
 FROM nginx:alpine

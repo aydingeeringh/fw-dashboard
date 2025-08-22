@@ -7,7 +7,7 @@
 
 <EvidenceDefaultLayout 
     {data} 
-    logo="/fw-dashboard/images/logo.png"
+    logo="{base}/images/logo.png"
 	homePageName="Dashboard"
 >
 	<slot slot="content" />

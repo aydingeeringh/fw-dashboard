@@ -21,6 +21,7 @@ jobs:
 
       - name: build
         env:
+          NODE_ENV: production
           BASE_PATH: '/${{ github.event.repository.name }}'
           ## Add and uncomment any environment variables here
           ## EVIDENCE_SOURCE__my_source__username: ${{ secrets.EVIDENCE_SOURCE__MY_SOURCE__USERNAME }}

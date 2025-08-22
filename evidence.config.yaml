@@ -1,6 +1,3 @@
-deployment:
-  basePath: /fw-dashboard
-
 appearance:
   default: system
   switcher: true

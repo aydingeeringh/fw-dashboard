@@ -11,7 +11,7 @@ title: Futureworld shareholder value analytics
 ```sql link_data
 SELECT 
     DISTINCT region,
-    '/' || region as link
+    region as link
 FROM 
     regions
 WHERE region IS NOT NULL
@@ -136,12 +136,6 @@ FROM
   ${regions}
 WHERE discount_or_premium >= 0
 ```
-
-{#each link_data as row}
-
-<a href={row.link}/>
-
-{/each}
 
 <Slider
     title="Year" 

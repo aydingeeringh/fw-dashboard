@@ -7,7 +7,6 @@
 
 <EvidenceDefaultLayout 
     {data} 
-    logo="{base}/images/logo.png"
 	homePageName="Dashboard"
 >
 	<slot slot="content" />
